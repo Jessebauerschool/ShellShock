@@ -61,7 +61,6 @@ import net.aoba.gui.navigation.huds.SpeedHud;
 import net.aoba.gui.navigation.huds.TimeHud;
 import net.aoba.gui.navigation.huds.WatermarkHud;
 import net.aoba.gui.navigation.windows.AntiCheatWindow;
-import net.aoba.gui.navigation.windows.AuthCrackerWindow;
 import net.aoba.gui.navigation.windows.FriendsWindow;
 import net.aoba.gui.navigation.windows.PathfindingWindow;
 import net.aoba.gui.navigation.windows.SearchWindow;
@@ -79,7 +78,6 @@ import net.aoba.managers.SettingManager;
 import net.aoba.module.Category;
 import net.aoba.module.Module;
 import net.aoba.settings.types.BooleanSetting;
-import net.aoba.settings.types.IntegerSetting;
 import net.aoba.settings.types.ShaderSetting;
 import net.aoba.settings.types.FloatSetting;
 import net.aoba.settings.types.FontSetting;
@@ -97,7 +95,6 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 public class GuiManager implements KeyDownListener, TickListener, Render2DListener, MouseClickListener,
 		MouseMoveListener, MouseScrollListener {
 	private static final Minecraft MC = Minecraft.getInstance();
-	private static final int UI_THEME_VERSION = 1;
 	private static final Shader CLICK_GUI_OVERLAY = Shader.solid(Colors.UiOverlay);
 	
 	public KeybindSetting clickGuiButton = KeybindSetting.builder().id("key.clickgui").displayName("ClickGUI Key")
@@ -121,9 +118,6 @@ public class GuiManager implements KeyDownListener, TickListener, Render2DListen
 	public Page hudPane = new Page("Hud");
 
 	// Global HUD Settings
-	public static BooleanSetting enableCustomTitle = BooleanSetting.builder().id("enable_custom_title")
-			.displayName("Enable Custom Title Screen").defaultValue(true).build();
-
 	public static BooleanSetting enableTooltips = BooleanSetting.builder().id("enable_tooltips")
 			.displayName("Enable Tooltips").defaultValue(true).build();
 
@@ -193,9 +187,6 @@ public class GuiManager implements KeyDownListener, TickListener, Render2DListen
 			.displayName("Line Thickness").description("The thickness of borders and outlines.").defaultValue(1f)
 			.minValue(0.5f).maxValue(4f).step(0.5f).build();
 
-	private static final IntegerSetting uiThemeVersion = IntegerSetting.builder().id("ui_theme_version")
-			.defaultValue(0).minValue(0).maxValue(UI_THEME_VERSION).step(1).build();
-
 	public static FontSetting fontSetting = FontSetting.builder().id("aoba_font").displayName("Font")
 			.description("The font that ShellShock will use.").fontName(FontManager.DEFAULT_FONT).build();
 
@@ -216,24 +207,6 @@ public class GuiManager implements KeyDownListener, TickListener, Render2DListen
 	public GuiManager() {
 		clickGuiTabControl = new TabComponent();
 
-		SettingManager.registerGlobalSetting(windowBorderColor);
-		SettingManager.registerGlobalSetting(windowBackgroundColor);
-		SettingManager.registerGlobalSetting(panelBorderColor);
-		SettingManager.registerGlobalSetting(panelBackgroundColor);
-		SettingManager.registerGlobalSetting(componentBackgroundColor);
-		SettingManager.registerGlobalSetting(componentHoveredBackgroundColor);
-		SettingManager.registerGlobalSetting(foregroundColor);
-		SettingManager.registerGlobalSetting(foregroundHeaderColor);
-		SettingManager.registerGlobalSetting(foregroundAccentColor);
-		SettingManager.registerGlobalSetting(buttonBackgroundColor);
-		SettingManager.registerGlobalSetting(buttonHoverBackgroundColor);
-		SettingManager.registerGlobalSetting(buttonPressedBackgroundColor);
-		SettingManager.registerGlobalSetting(buttonBorderColor);
-		SettingManager.registerGlobalSetting(roundingRadius);
-		SettingManager.registerGlobalSetting(lineThickness);
-		SettingManager.registerGlobalSetting(uiThemeVersion);
-		SettingManager.registerGlobalSetting(fontSetting);
-
 		SettingManager.registerSetting(clickGuiButton);
 		Aoba.getInstance().eventManager.AddListener(KeyDownListener.class, this);
 		Aoba.getInstance().eventManager.AddListener(TickListener.class, this);
@@ -243,32 +216,8 @@ public class GuiManager implements KeyDownListener, TickListener, Render2DListen
 		Aoba.getInstance().eventManager.AddListener(MouseScrollListener.class, this);
 	}
 
-	public void applyThemeMigration() {
-		if (uiThemeVersion.getValue() >= UI_THEME_VERSION)
-			return;
-
-		foregroundHeaderColor.setValue(Shader.solid(Colors.UiBrightRed));
-		foregroundAccentColor.setValue(Shader.solid(Colors.UiRed));
-		windowBorderColor.setValue(Shader.solid(Colors.UiBorder));
-		panelBorderColor.setValue(Shader.solid(Colors.UiBorderAccent));
-		componentBackgroundColor.setValue(Shader.solid(Colors.UiComponent));
-		componentHoveredBackgroundColor.setValue(Shader.solid(Colors.UiHover));
-		componentBorderColor.setValue(Shader.solid(Colors.UiBorderAccent));
-		windowBackgroundColor.setValue(Shader.solid(Colors.UiWindow));
-		panelBackgroundColor.setValue(Shader.solid(Colors.UiPanel));
-		buttonBackgroundColor.setValue(Shader.solid(Colors.UiButton));
-		buttonHoverBackgroundColor.setValue(Shader.solid(Colors.UiButtonHover));
-		buttonPressedBackgroundColor.setValue(Shader.solid(Colors.UiButtonPressed));
-		buttonBorderColor.setValue(Shader.solid(Colors.UiRed));
-		roundingRadius.setValue(0f);
-		lineThickness.setValue(1f);
-		fontSetting.setFontName(FontManager.DEFAULT_FONT);
-		uiThemeVersion.setValue(UI_THEME_VERSION);
-	}
-
 	public void Initialize() {
 		System.out.println("Initializing");
-		toolsPane.addWindow(new AuthCrackerWindow());
 		toolsPane.addWindow(new PathfindingWindow());
 		toolsPane.addWindow(new MacroWindow());
 		

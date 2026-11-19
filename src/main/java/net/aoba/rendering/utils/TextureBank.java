@@ -13,8 +13,6 @@ import net.minecraft.resources.Identifier;
 public class TextureBank {
 	public static final Identifier container = Identifier.fromNamespaceAndPath("aoba", "textures/hud/container.png");
 	public static final Identifier gear = Identifier.fromNamespaceAndPath("aoba", "textures/gear.png");
-	public static final Identifier discord = Identifier.fromNamespaceAndPath("aoba", "textures/mainmenu/discord.png");
-	public static final Identifier mainmenu_panorama = Identifier.fromNamespaceAndPath("aoba", "textures/mainmenu/panorama");
 	public static final Identifier combat = Identifier.fromNamespaceAndPath("aoba", "textures/combat.png");
 	public static final Identifier misc = Identifier.fromNamespaceAndPath("aoba", "textures/misc.png");
 	public static final Identifier movement = Identifier.fromNamespaceAndPath("aoba", "textures/movement.png");

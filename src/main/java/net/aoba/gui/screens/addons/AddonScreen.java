@@ -12,7 +12,6 @@ import java.nio.file.Path;
 import java.util.List;
 import net.aoba.api.IAddon;
 import net.aoba.gui.components.widgets.AobaButtonWidget;
-import net.aoba.gui.screens.AobaPanorama;
 import net.aoba.gui.screens.addons.AddonSelectionList.NormalEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -23,8 +22,6 @@ import net.minecraft.util.CommonColors;
 import com.mojang.blaze3d.Blaze3D;
 
 public class AddonScreen extends Screen {
-	protected static final AobaPanorama AOBA_ROTATING_PANORAMA_RENDERER = new AobaPanorama();
-
 	private final Screen parentScreen;
 
 	// Widget
@@ -110,11 +107,4 @@ public class AddonScreen extends Screen {
 		}
 	}
 
-	@Override
-	protected void extractPanorama(final GuiGraphicsExtractor graphics, final float a){
-		try {
-			AOBA_ROTATING_PANORAMA_RENDERER.extractRenderState(graphics, this.width, this.height, true);
-		} catch (IllegalStateException e) {
-		}
-	}
 }

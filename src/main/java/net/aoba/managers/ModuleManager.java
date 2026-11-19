@@ -72,7 +72,6 @@ import net.aoba.module.modules.movement.Strafe;
 import net.aoba.module.modules.render.Breadcrumbs;
 import net.aoba.module.modules.render.ChestESP;
 import net.aoba.module.modules.render.EntityESP;
-import net.aoba.module.modules.render.FocusFps;
 import net.aoba.module.modules.render.Fullbright;
 import net.aoba.module.modules.render.ItemESP;
 import net.aoba.module.modules.render.NoRender;
@@ -124,7 +123,6 @@ public class ModuleManager implements KeyDownListener, KeyUpListener {
 	public ChestESP chestesp = new ChestESP();
 	public Criticals criticals = new Criticals();
 	public ClickTP clickTP = new ClickTP();
-	public DiscordRPCModule discordRPC = new DiscordRPCModule();
 	public ElytraTarget elytraTarget = new ElytraTarget();
 	public EntityControl entityControl = new EntityControl();
 	public EntityESP entityesp = new EntityESP();
@@ -138,7 +136,6 @@ public class ModuleManager implements KeyDownListener, KeyUpListener {
 	public Fullbright fullbright = new Fullbright();
 	public ItemESP itemesp = new ItemESP();
 	public NoRender norender = new NoRender();
-	public FocusFps focusfps = new FocusFps();
 	public Glide glide = new Glide();
 	public GuiMove guimove = new GuiMove();
 	public HighJump higherjump = new HighJump();

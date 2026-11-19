@@ -51,19 +51,19 @@ public class CmdHelp extends Command {
     }
 
     private void ShowCommands(int page) {
-        String title = "------------ Help [Page " + page + " of 5] ------------";  // TODO: remove hardcoded page length
-        CommandManager.sendChatMessage(title);
-        CommandManager.sendChatMessage("Use " + ChatFormatting.LIGHT_PURPLE + ".shellshock help [n]" + ChatFormatting.RESET + " to get page n of help.");
-
         // Fetch the commands and dislays their syntax on the screen.
         Map<String, Command> commands = Aoba.getInstance().commandManager.getCommands();
         Set<String> keySet = commands.keySet();
         ArrayList<String> listOfCommands = new ArrayList<String>(keySet);
+        int pageCount = Math.max(1, (listOfCommands.size() + indexesPerPage - 1) / indexesPerPage);
+        String title = "------------ Help [Page " + page + " of " + pageCount + "] ------------";
+        CommandManager.sendChatMessage(title);
+        CommandManager.sendChatMessage("Use " + ChatFormatting.LIGHT_PURPLE + ".shellshock help [n]" + ChatFormatting.RESET + " to get page n of help.");
 
-        for (int i = (page - 1) * indexesPerPage; i <= (page * indexesPerPage); i++) {
-            if (i >= 0 && i < Aoba.getInstance().commandManager.getNumOfCommands()) {
-                CommandManager.sendChatMessage(" .shellshock " + listOfCommands.get(i));
-            }
+        int start = (page - 1) * indexesPerPage;
+        int end = Math.min(start + indexesPerPage, listOfCommands.size());
+        for (int i = Math.max(0, start); i < end; i++) {
+            CommandManager.sendChatMessage(" .shellshock " + listOfCommands.get(i));
         }
         CommandManager.sendChatMessage("-".repeat(title.length() - 2)); // mc font characters are not the same width but eh..
     }

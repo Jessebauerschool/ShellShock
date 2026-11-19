@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import net.aoba.Aoba;
 import net.aoba.gui.components.widgets.AobaButtonWidget;
-import net.aoba.gui.screens.AobaPanorama;
 import net.aoba.managers.proxymanager.Socks5Proxy;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
@@ -21,8 +20,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 public class ProxyScreen extends Screen {
-	protected static final AobaPanorama AOBA_ROTATING_PANORAMA_RENDERER = new AobaPanorama();
-
 	private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
 	private final Screen parentScreen;
 	private ProxySelectionList proxyListSelector;
@@ -126,11 +123,4 @@ public class ProxyScreen extends Screen {
 		Aoba.getInstance().proxyManager.setActiveProxy(null);
 	}
 
-	@Override
-	protected void extractPanorama(final GuiGraphicsExtractor graphics, final float a){
-		try {
-			AOBA_ROTATING_PANORAMA_RENDERER.extractRenderState(graphics, this.width, this.height, true);
-		} catch (IllegalStateException e) {
-		}
-	}
 }

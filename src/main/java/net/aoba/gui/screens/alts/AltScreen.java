@@ -12,7 +12,6 @@ import java.util.List;
 
 import net.aoba.Aoba;
 import net.aoba.gui.components.widgets.AobaButtonWidget;
-import net.aoba.gui.screens.AobaPanorama;
 import net.aoba.managers.altmanager.Alt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -22,8 +21,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 public class AltScreen extends Screen {
-	protected static final AobaPanorama AOBA_ROTATING_PANORAMA_RENDERER = new AobaPanorama();
-
 	private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 33, 64);
 	private final Screen parentScreen;
 	private AobaButtonWidget editButton;
@@ -143,11 +140,4 @@ public class AltScreen extends Screen {
 		refreshAltList();
 	}
 
-	@Override
-	protected void extractPanorama(final GuiGraphicsExtractor graphics, final float a){
-		try {
-			AOBA_ROTATING_PANORAMA_RENDERER.extractRenderState(graphics, this.width, this.height, true);
-		} catch (IllegalStateException e) {
-		}
-	}
 }

@@ -157,7 +157,6 @@ public class AobaClient {
 
 		LOGGER.info("[ShellShock] Loading Settings");
 		SettingManager.loadGlobalSettings();
-		guiManager.applyThemeMigration();
 		SettingManager.loadSettings();
 
 		LOGGER.info("[ShellShock] Initializing Alt Manager");

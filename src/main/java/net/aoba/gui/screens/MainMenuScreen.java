@@ -14,7 +14,6 @@ import org.jspecify.annotations.Nullable;
 import net.aoba.AobaClient;
 import net.aoba.api.IAddon;
 import net.aoba.gui.components.widgets.AobaButtonWidget;
-import net.aoba.gui.components.widgets.AobaImageButtonWidget;
 import net.aoba.gui.screens.addons.AddonScreen;
 import net.aoba.rendering.utils.TextureBank;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -23,12 +22,8 @@ import net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen;
 import net.minecraft.client.gui.screens.options.OptionsScreen;
 import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
 import net.minecraft.network.chat.Component;
-import java.net.URI;
-import com.mojang.blaze3d.Blaze3D;
 
 public class MainMenuScreen extends Screen {
-	protected static final AobaPanorama AOBA_ROTATING_PANORAMA_RENDERER = new AobaPanorama();
-
 	final int BUTTON_WIDTH = Math.max(150, width / 6);
 	final int BUTTON_HEIGHT = Math.max(25, height / 20);
 	final int SPACING = Math.max(5, height / 100);
@@ -100,16 +95,6 @@ public class MainMenuScreen extends Screen {
 			addRenderableWidget(modsButton);
 		} catch (ClassNotFoundException e) {}
 
-		AobaButtonWidget creditsButton = new AobaButtonWidget(width - 125, height - 30, 60, 20,
-				Component.nullToEmpty("Credits"));
-		creditsButton.setPressAction(b -> MC.gui.setScreen(new AobaCreditsScreen()));
-		addRenderableWidget(creditsButton);
-
-		AobaImageButtonWidget discordButton = new AobaImageButtonWidget(width - 60, height - 30, 20, 20,
-				TextureBank.discord);
-		discordButton.setPressAction(b -> Blaze3D.openUri(URI.create("https://discord.gg/CDa4etPFtk")));
-		addRenderableWidget(discordButton);
-
 	}
 
 	@Override
@@ -150,16 +135,4 @@ public class MainMenuScreen extends Screen {
 		}
 	}
 
-	@Override
-	public void extractBackground(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
-		extractPanorama(graphics, a);
-	}
-
-	@Override
-	protected void extractPanorama(final GuiGraphicsExtractor graphics, final float a){
-		try {
-			AOBA_ROTATING_PANORAMA_RENDERER.extractRenderState(graphics, this.width, this.height, true);
-		} catch (IllegalStateException e) {
-		}
-	}
 }

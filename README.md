@@ -2,7 +2,7 @@
 
 # ShellShock Client
 
-ShellShock is a Fabric client for **Minecraft 26.3.x**, with a customizable interface and a broad set of utility features.
+ShellShock is a Fabric client for **Minecraft 26.3.x**, focused on anarchy-server gameplay.
 
 
 ## Release Cycle
@@ -12,10 +12,12 @@ I generally push in 2 - 4 large commits a week, so unlike other projects, i only
 
 - **Alt manager** for managing Minecraft accounts
 - **Command system** with in-game access to client features
-- **Customizable ClickGUI** with movable, pinnable windows
-- **Module library** with configurable keybinds
+- **ClickGUI** for managing modules, settings, and HUDs
+- **Gameplay modules** for movement, combat, tracking, and world utilities
 - **Addon system** for custom features
 - **Proxy manager** for proxy connections
+
+The interface uses a fixed theme and Minecraft's default font; per-element theme and font customization are not supported.
 
 ## Default keybinds
 
