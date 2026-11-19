@@ -120,7 +120,7 @@ public class MainMenuScreen extends Screen {
 		int startX = (width - BUTTON_WIDTH) / 2;
 		int startY = (int) ((height - widgetHeight) / 2 + smallScreenHeightOffset);
 
-		drawContext.text(font, "ShellShock Client", 2, height - 10, 0xFFFF00FF);
+		drawContext.text(font, "ShellShock Client", 2, height - 10, 0xFFFF5555);
 
 		if (AobaClient.addons.isEmpty()) {
 			String noAddonsText = "No addons loaded";
@@ -138,12 +138,12 @@ public class MainMenuScreen extends Screen {
 				int authorWidth = font.width(author);
 
 				drawContext.text(font, addonName,
-						width - addonNameWidth - byTextWidth - authorWidth - 20, yOffset, 0xFF50C878);
+						width - addonNameWidth - byTextWidth - authorWidth - 20, yOffset, 0xFFFF5555);
 
 				drawContext.text(font, byText, width - byTextWidth - authorWidth - 15, yOffset,
 						0xFFFFFFFF);
 
-				drawContext.text(font, author, width - authorWidth - 10, yOffset, 0xFFFF0000);
+				drawContext.text(font, author, width - authorWidth - 10, yOffset, 0xFFE3434E);
 
 				yOffset += 10;
 			}

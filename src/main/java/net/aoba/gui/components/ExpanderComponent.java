@@ -60,7 +60,7 @@ public class ExpanderComponent extends Component {
 		
 		RectangleComponent container = new RectangleComponent();
 		container.bindProperty(UIElement.BackgroundProperty, GuiManager.panelBackgroundColor);
-		container.setProperty(UIElement.CornerRadiusProperty, 6f);
+		container.setProperty(UIElement.CornerRadiusProperty, 0f);
 		container.setProperty(UIElement.PaddingProperty, new Thickness(8f));
 		
 		layout = new StackPanelComponent();

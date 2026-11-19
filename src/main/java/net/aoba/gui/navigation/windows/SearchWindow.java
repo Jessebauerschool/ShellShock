@@ -48,7 +48,7 @@ public class SearchWindow extends Window {
 		});
 		searchTextBox.bindProperty(UIElement.BackgroundProperty, GuiManager.windowBackgroundColor);
 		searchTextBox.bindProperty(UIElement.BorderProperty, GuiManager.windowBorderColor);
-		searchTextBox.setProperty(UIElement.CornerRadiusProperty, 30f);
+		searchTextBox.setProperty(UIElement.CornerRadiusProperty, 0f);
 		searchTextBox.setProperty(TextBoxComponent.FontSizeProperty, 16f);
 		searchTextBox.setProperty(UIElement.VerticalAlignmentProperty, VerticalAlignment.Stretch);
 		searchTextBox.setProperty(UIElement.HorizontalAlignmentProperty, HorizontalAlignment.Stretch);

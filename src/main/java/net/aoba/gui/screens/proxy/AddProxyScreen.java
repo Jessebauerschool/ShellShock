@@ -10,9 +10,9 @@ package net.aoba.gui.screens.proxy;
 
 import net.aoba.Aoba;
 import net.aoba.AobaClient;
+import net.aoba.gui.components.widgets.AobaButtonWidget;
 import net.aoba.managers.proxymanager.Socks5Proxy;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -20,7 +20,7 @@ import net.minecraft.network.chat.Component;
 public class AddProxyScreen extends Screen {
 	private final ProxyScreen parent;
 
-	private Button buttonAddProxy;
+	private AobaButtonWidget buttonAddProxy;
 	private EditBox textFieldProxyIp;
 	private EditBox textFieldProxyPort;
 	private EditBox textFieldProxyUsername;
@@ -56,13 +56,13 @@ public class AddProxyScreen extends Screen {
 		textFieldProxyPassword.setValue("");
 		addRenderableWidget(textFieldProxyPassword);
 
-		buttonAddProxy = Button.builder(Component.nullToEmpty("Add Proxy"), b -> onAddProxyButtonPressed())
-				.bounds(width / 2 - 100, height / 2 + 74, 200, 20).build();
+		buttonAddProxy = new AobaButtonWidget(width / 2 - 100, height / 2 + 74, 200, 20,
+				Component.nullToEmpty("Add Proxy"), b -> onAddProxyButtonPressed());
 		buttonAddProxy.active = false;
 		addRenderableWidget(buttonAddProxy);
 
-		addRenderableWidget(Button.builder(Component.nullToEmpty("Cancel"), b -> onButtonCancelPressed())
-				.bounds(width / 2 - 100, height / 2 + 98, 200, 20).build());
+		addRenderableWidget(new AobaButtonWidget(width / 2 - 100, height / 2 + 98, 200, 20,
+				Component.nullToEmpty("Cancel"), b -> onButtonCancelPressed()));
 	}
 
 	private void updateAddButtonState() {
@@ -97,7 +97,7 @@ public class AddProxyScreen extends Screen {
     @Override
 	public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
 		super.extractRenderState(graphics, mouseX, mouseY, a);
-		graphics.centeredText(font, "Add Proxy", width / 2, 20, 0xFFFFFFFF);
+		graphics.centeredText(font, "Add Proxy", width / 2, 20, 0xFFFF5555);
 
 		graphics.text(font, "IP Address:", width / 2 - 100, height / 2 - 90, 0xFFFFFFFF);
 		graphics.text(font, "Port:", width / 2 - 100, height / 2 - 50, 0xFFFFFFFF);

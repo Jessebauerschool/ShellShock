@@ -9,9 +9,9 @@
 package net.aoba.gui.screens.alts;
 
 import net.aoba.Aoba;
+import net.aoba.gui.components.widgets.AobaButtonWidget;
 import net.aoba.managers.altmanager.Alt;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -22,7 +22,7 @@ public class EditAltScreen extends Screen {
     private final AltScreen parent;
     private final Alt alt;
 
-    private Button buttonSaveAlt;
+    private AobaButtonWidget buttonSaveAlt;
     private Checkbox toggleCracked;
     private EditBox textFieldAltUsername;
 
@@ -44,17 +44,17 @@ public class EditAltScreen extends Screen {
         addRenderableWidget(toggleCracked);
 
 
-        buttonSaveAlt = Button.builder(Component.nullToEmpty("Save Alt"), b -> onButtonAltEditPressed())
-                .bounds(width / 2 - 100, height / 2 + 24, 200, 20).build();
+        buttonSaveAlt = new AobaButtonWidget(width / 2 - 100, height / 2 + 24, 200, 20,
+                Component.nullToEmpty("Save Alt"), b -> onButtonAltEditPressed());
         addRenderableWidget(buttonSaveAlt);
-        addRenderableWidget(Button.builder(Component.nullToEmpty("Cancel"), b -> onButtonCancelPressed())
-                .bounds(width / 2 - 100, height / 2 + 46, 200, 20).build());
+        addRenderableWidget(new AobaButtonWidget(width / 2 - 100, height / 2 + 46, 200, 20,
+                Component.nullToEmpty("Cancel"), b -> onButtonCancelPressed()));
     }
 
     @Override
 	public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
 		super.extractRenderState(graphics, mouseX, mouseY, a);
-		graphics.centeredText(font, "Edit Alternate Account", width / 2, 20, 0xFFFFFFFF);
+		graphics.centeredText(font, "Edit Alternate Account", width / 2, 20, 0xFFFF5555);
 		graphics.text(font, "Username:", width / 2 - 100, height / 2 - 50, 0xFFFFFFFF);
 	}
     

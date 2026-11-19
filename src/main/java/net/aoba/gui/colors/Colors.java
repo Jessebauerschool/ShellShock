@@ -22,4 +22,16 @@ public class Colors {
     public static final Color Charcoal = new Color(54, 69, 79);
     public static final Color Gray = new Color(127, 127, 127);
     public static final Color White = new Color(255, 255, 255);
+	public static final Color UiWindow = new Color(22, 9, 11);
+	public static final Color UiPanel = new Color(36, 10, 14);
+	public static final Color UiComponent = new Color(28, 10, 13);
+	public static final Color UiHover = new Color(61, 17, 25);
+	public static final Color UiBorder = new Color(92, 20, 28);
+	public static final Color UiBorderAccent = new Color(112, 27, 38);
+	public static final Color UiRed = new Color(227, 67, 78);
+	public static final Color UiBrightRed = new Color(255, 85, 85);
+	public static final Color UiButton = new Color(125, 16, 28);
+	public static final Color UiButtonHover = new Color(181, 27, 42);
+	public static final Color UiButtonPressed = new Color(82, 10, 18);
+	public static final Color UiOverlay = new Color(8, 0, 2, 185);
 }

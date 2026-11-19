@@ -10,7 +10,6 @@ package net.aoba.gui.components;
 
 import net.aoba.Aoba;
 import net.aoba.gui.UIElement;
-import net.aoba.gui.colors.Color;
 import net.aoba.gui.colors.Colors;
 import net.aoba.gui.navigation.HudWindow;
 import net.aoba.gui.types.GridDefinition;
@@ -35,7 +34,8 @@ public class HudComponent extends Component {
 		grid.addChild(nameComponent);
 
 		statusComponent = new StringComponent(hud.activated.getValue() ? "-" : "+");
-		statusComponent.setProperty(ForegroundProperty, Shader.solid(hud.activated.getValue() ? new Color(255, 0, 0) : new Color(0, 255, 0)));
+		statusComponent.setProperty(ForegroundProperty,
+				Shader.solid(hud.activated.getValue() ? Colors.UiBrightRed : Colors.Gray));
 		statusComponent.setProperty(UIElement.VerticalAlignmentProperty, VerticalAlignment.Center);
 		grid.addChild(statusComponent);
 
@@ -59,7 +59,7 @@ public class HudComponent extends Component {
 			statusComponent.setProperty(ForegroundProperty, Shader.solid(Colors.Red));
 		} else {
 			statusComponent.setProperty(StringComponent.TextProperty, "+");
-			statusComponent.setProperty(ForegroundProperty, Shader.solid(Colors.Green));
+			statusComponent.setProperty(ForegroundProperty, Shader.solid(Colors.Gray));
 		}
 	}
 }

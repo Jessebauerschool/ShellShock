@@ -9,9 +9,9 @@
 package net.aoba.gui.screens.alts;
 
 import net.aoba.Aoba;
+import net.aoba.gui.components.widgets.AobaButtonWidget;
 import net.aoba.managers.altmanager.Alt;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -20,7 +20,7 @@ import net.minecraft.network.chat.Component;
 public class DirectLoginAltScreen extends Screen {
 
 	private final Screen parent;
-	private Button buttonLoginAlt;
+	private AobaButtonWidget buttonLoginAlt;
 
 	private EditBox textFieldAltUsername;
 	private Checkbox isCracked;
@@ -42,12 +42,12 @@ public class DirectLoginAltScreen extends Screen {
 				.pos(width / 2 - 100, height / 2 - 20).maxWidth(200).build();
 		addRenderableWidget(isCracked);
 
-		buttonLoginAlt = Button.builder(Component.nullToEmpty("Login"), b -> onButtonLoginPressed())
-				.bounds(width / 2 - 100, height / 2 + 24, 200, 20).build();
+		buttonLoginAlt = new AobaButtonWidget(width / 2 - 100, height / 2 + 24, 200, 20,
+				Component.nullToEmpty("Login"), b -> onButtonLoginPressed());
 		addRenderableWidget(buttonLoginAlt);
 
-		addRenderableWidget(Button.builder(Component.nullToEmpty("Cancel"), b -> minecraft.gui.setScreen(parent))
-				.bounds(width / 2 - 100, height / 2 + 46, 200, 20).build());
+		addRenderableWidget(new AobaButtonWidget(width / 2 - 100, height / 2 + 46, 200, 20,
+				Component.nullToEmpty("Cancel"), b -> minecraft.gui.setScreen(parent)));
 	}
 
 	private void onButtonLoginPressed() {
@@ -67,7 +67,7 @@ public class DirectLoginAltScreen extends Screen {
 	@Override
 	public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
 		super.extractRenderState(graphics, mouseX, mouseY, a);
-		graphics.centeredText(font, title.getString(), width / 2, 20, 0xFFFFFFFF);
+		graphics.centeredText(font, title.getString(), width / 2, 20, 0xFFFF5555);
 		graphics.text(font, "Enter Username/Email", width / 2 - 100, height / 2 - 60,
 				0xFFFFFFFF);
 		textFieldAltUsername.extractRenderState(graphics, mouseX, mouseY, a);

@@ -29,7 +29,7 @@ public class ModuleSelectorHud extends HudWindow {
 
 	private static final float ROW_HEIGHT = 30.0f;
 	private static final Shader DISABLED_MODULE_SHADER = Shader.solid(Colors.White);
-	private static final Shader ENABLED_MODULE_SHADER = Shader.solid(Colors.Green);
+	private static final Shader ENABLED_MODULE_SHADER = Shader.solid(Colors.UiBrightRed);
 	
 	private final KeyMapping keybindUp;
 	private final KeyMapping keybindDown;
@@ -136,7 +136,7 @@ public class ModuleSelectorHud extends HudWindow {
 				// Draws the name of the category dependent on whether it is selected.
 				if (index == i)
 					renderer.drawString("> " + categories.get(i).getName(), x + 8,
-							y + (ROW_HEIGHT * i) + 8, GuiManager.foregroundColor.getValue(), font);
+							y + (ROW_HEIGHT * i) + 8, GuiManager.foregroundHeaderColor.getValue(), font);
 				else
 					renderer.drawString(categories.get(i).getName(), x + 8, y + (ROW_HEIGHT * i) + 8,
 							DISABLED_MODULE_SHADER, font);

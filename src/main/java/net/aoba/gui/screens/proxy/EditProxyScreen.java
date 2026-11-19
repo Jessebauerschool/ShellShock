@@ -10,9 +10,9 @@ package net.aoba.gui.screens.proxy;
 
 import net.aoba.Aoba;
 import net.aoba.AobaClient;
+import net.aoba.gui.components.widgets.AobaButtonWidget;
 import net.aoba.managers.proxymanager.Socks5Proxy;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -24,7 +24,7 @@ public class EditProxyScreen extends Screen {
 	private final ProxyScreen parent;
 	private final Socks5Proxy proxy;
 
-	private Button buttonSaveProxy;
+	private AobaButtonWidget buttonSaveProxy;
 	private EditBox textFieldProxyIp;
 	private EditBox textFieldProxyPort;
 	private EditBox textFieldProxyUsername;
@@ -65,17 +65,17 @@ public class EditProxyScreen extends Screen {
 		});
 		addRenderableWidget(textFieldProxyPassword);
 
-		buttonSaveProxy = Button.builder(Component.nullToEmpty("Save Proxy"), b -> onButtonProxyEditPressed())
-				.bounds(width / 2 - 100, height / 2 + 84, 200, 20).build();
+		buttonSaveProxy = new AobaButtonWidget(width / 2 - 100, height / 2 + 84, 200, 20,
+				Component.nullToEmpty("Save Proxy"), b -> onButtonProxyEditPressed());
 		addRenderableWidget(buttonSaveProxy);
-		addRenderableWidget(Button.builder(Component.nullToEmpty("Cancel"), b -> onButtonCancelPressed())
-				.bounds(width / 2 - 100, height / 2 + 106, 200, 20).build());
+		addRenderableWidget(new AobaButtonWidget(width / 2 - 100, height / 2 + 106, 200, 20,
+				Component.nullToEmpty("Cancel"), b -> onButtonCancelPressed()));
 	}
 
     @Override
 	public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
 		super.extractRenderState(graphics, mouseX, mouseY, a);
-		graphics.centeredText(font, "Edit Proxy", width / 2, 20, 0xFFFFFFFF);
+		graphics.centeredText(font, "Edit Proxy", width / 2, 20, 0xFFFF5555);
 		graphics.text(font, "IP:", width / 2 - 100, height / 2 - 90, 0xFFFFFFFF);
 		graphics.text(font, "Port:", width / 2 - 100, height / 2 - 50, 0xFFFFFFFF);
 		graphics.text(font, "Username:", width / 2 - 100, height / 2 - 10, 0xFFFFFFFF);

@@ -11,10 +11,10 @@ package net.aoba.gui.screens.proxy;
 import java.util.ArrayList;
 
 import net.aoba.Aoba;
+import net.aoba.gui.components.widgets.AobaButtonWidget;
 import net.aoba.gui.screens.AobaPanorama;
 import net.aoba.managers.proxymanager.Socks5Proxy;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
@@ -26,8 +26,8 @@ public class ProxyScreen extends Screen {
 	private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this);
 	private final Screen parentScreen;
 	private ProxySelectionList proxyListSelector;
-	private Button editButton;
-	private Button deleteButton;
+	private AobaButtonWidget editButton;
+	private AobaButtonWidget deleteButton;
 
 	public ProxyScreen(Screen parentScreen) {
 		super(Component.nullToEmpty("Proxy Manager"));
@@ -42,21 +42,21 @@ public class ProxyScreen extends Screen {
 		layout.addToContents(proxyListSelector);
 
 		LinearLayout buttonRow = LinearLayout.horizontal().spacing(4);
-		buttonRow.addChild(Button.builder(Component.nullToEmpty("Add Proxy"), b -> minecraft.gui.setScreen(new AddProxyScreen(this)))
-				.width(100).build());
+		buttonRow.addChild(new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Add Proxy"),
+				b -> minecraft.gui.setScreen(new AddProxyScreen(this))));
 
-		editButton = Button.builder(Component.nullToEmpty("Edit Proxy"), b -> editSelected())
-				.width(100).build();
+		editButton = new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Edit Proxy"),
+				b -> editSelected());
 		editButton.active = false;
 		buttonRow.addChild(editButton);
 
-		deleteButton = Button.builder(Component.nullToEmpty("Delete Proxy"), b -> deleteSelected())
-				.width(100).build();
+		deleteButton = new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Delete Proxy"),
+				b -> deleteSelected());
 		deleteButton.active = false;
 		buttonRow.addChild(deleteButton);
 
-		buttonRow.addChild(Button.builder(Component.nullToEmpty("Cancel"), b -> minecraft.gui.setScreen(parentScreen))
-				.width(100).build());
+		buttonRow.addChild(new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Cancel"),
+				b -> minecraft.gui.setScreen(parentScreen)));
 
 		layout.addToFooter(buttonRow);
 		layout.arrangeElements();

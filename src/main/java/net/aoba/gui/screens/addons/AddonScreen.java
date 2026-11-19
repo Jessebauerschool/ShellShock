@@ -11,11 +11,11 @@ package net.aoba.gui.screens.addons;
 import java.nio.file.Path;
 import java.util.List;
 import net.aoba.api.IAddon;
+import net.aoba.gui.components.widgets.AobaButtonWidget;
 import net.aoba.gui.screens.AobaPanorama;
 import net.aoba.gui.screens.addons.AddonSelectionList.NormalEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -44,12 +44,11 @@ public class AddonScreen extends Screen {
 
 		// Left Side
 		Path addonsPath = Minecraft.getInstance().getResourcePackDirectory().getParent().resolve("mods");
-		addRenderableWidget(Button
-				.builder(Component.nullToEmpty("Open Addons Folder"), button -> Blaze3D.openPath(addonsPath))
-				.bounds(16, height - 40, 120, 20).build());
+		addRenderableWidget(new AobaButtonWidget(16, height - 40, 120, 20,
+				Component.nullToEmpty("Open Addons Folder"), button -> Blaze3D.openPath(addonsPath)));
 
-		addRenderableWidget(Button.builder(Component.nullToEmpty("Done"), b -> minecraft.gui.setScreen(parentScreen))
-				.bounds(146, height - 40, 120, 20).build());
+		addRenderableWidget(new AobaButtonWidget(146, height - 40, 120, 20, Component.nullToEmpty("Done"),
+				b -> minecraft.gui.setScreen(parentScreen)));
 
 		addonListSelector = new AddonSelectionList(this, minecraft, 250, height, 16, 48);
 		addonListSelector.setRectangle(250, height - 80, 16, 32);
@@ -77,15 +76,15 @@ public class AddonScreen extends Screen {
 	@Override
 	public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
 		super.extractRenderState(graphics, mouseX, mouseY, a);
-		graphics.centeredText(font, "Addons", 145, 16, 0xFFFFFFFF);
+		graphics.centeredText(font, "Addons", 145, 16, 0xFFFF5555);
 
 		// Draw Addon Information
 		if (selectedAddon != null) {
 			AddonSelectionList.NormalEntry entry = (AddonSelectionList.NormalEntry) addonListSelector.getSelected();
 			if (entry != null) {
 				// Draw the border
-				graphics.fill(281, 59, 331, 109, 0xFFFFFFFF);
-				graphics.fill(282, 60, 330, 108, 0xFF000000);
+				graphics.fill(281, 59, 331, 109, 0xFFE3434E);
+				graphics.fill(282, 60, 330, 108, 0xFF16090B);
 
 				// Draw the texture
 				graphics.blit(entry.getIcon(), 282, 60, 48, 48, 0f, 0f, 1f, 1f);

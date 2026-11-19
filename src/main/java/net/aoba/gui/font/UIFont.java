@@ -10,6 +10,7 @@ package net.aoba.gui.font;
 
 import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.Minecraft;
 
 public class UIFont {
 	private final String name;
@@ -41,7 +42,7 @@ public class UIFont {
 			return existing;
 
 		if (fontBytes == null)
-			return getRenderer(FontManager.DEFAULT_FONT_SIZE, FontManager.WEIGHT_NORMAL);
+			return Minecraft.getInstance().font;
 
 		Font baked = bakedFonts.computeIfAbsent(key, _ -> {
 			float embolden = FontManager.getEmboldenForWeight(snappedWeight);
@@ -54,7 +55,7 @@ public class UIFont {
 			}
 		});
 
-		return baked != null ? baked : getRenderer(FontManager.DEFAULT_FONT_SIZE, FontManager.WEIGHT_NORMAL);
+		return baked != null ? baked : Minecraft.getInstance().font;
 	}
 
 	private static long makeKey(float atlasSize, int weight) {

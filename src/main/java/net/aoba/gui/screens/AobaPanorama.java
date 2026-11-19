@@ -21,5 +21,6 @@ public class AobaPanorama {
 
 		minecraft.gameRenderer.gameRenderState().guiRenderState.panoramaRenderState = new PanoramaRenderState(-this.spin);
 		graphics.blit(RenderPipelines.GUI_TEXTURED, PANORAMA_OVERLAY, 0, 0, 0.0f, 0.0f, width, height, 16, 128, 16, 128);
+		graphics.fill(0, 0, width, height, 0xAA160000);
 	}
 }

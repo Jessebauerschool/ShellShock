@@ -18,8 +18,8 @@ import net.aoba.rendering.Renderer2D;
 import net.aoba.rendering.shaders.Shader;
 
 public class HudWindow extends Window {
-	private static final Shader hoverColor = Shader.solid(new Color(255, 0, 0));
-	private static final Shader dragColor = Shader.solid(new Color(255, 0, 0, 165));
+	private static final Shader hoverColor = Shader.solid(new Color(227, 67, 78));
+	private static final Shader dragColor = Shader.solid(new Color(82, 10, 18, 210));
 	
 	public BooleanSetting activated;
 

@@ -32,7 +32,7 @@ public class EasingComponent extends Component {
 	private static final int SAMPLES = 48;
 	private static final EnumMap<EasingFunction, float[]> CURVE_CACHE = buildCurveCache();
 
-	private static final Shader SELECTED_EFFECT = Shader.gradient(new Color(2, 212, 2), new Color(0, 154, 0, 200), 90);
+	private static final Shader SELECTED_EFFECT = Shader.solid(new Color(181, 27, 42));
 
 	public static UIProperty<EasingFunction> SelectedValueProperty = new UIProperty<>("SelectedValue",
 			EasingFunction.SineEaseInOut, false, false, EasingComponent::OnSelectedValueChanged);

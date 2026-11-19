@@ -106,7 +106,7 @@ public class SliderComponent extends Component {
 		barContainer.setProperty(UIElement.HeightProperty, 14f);
 
 		trackBar = new RectangleComponent();
-		trackBar.setProperty(BackgroundProperty, Shader.solid(new Color(255, 255, 255, 100)));
+		trackBar.setProperty(BackgroundProperty, Shader.solid(new Color(112, 27, 38, 210)));
 		barContainer.addChild(trackBar);
 
 		fillBar = new RectangleComponent();

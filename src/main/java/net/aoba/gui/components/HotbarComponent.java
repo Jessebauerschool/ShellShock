@@ -15,8 +15,8 @@ import net.aoba.utils.types.MouseAction;
 import net.aoba.utils.types.MouseButton;
 
 public class HotbarComponent extends Component {
-    private static final Color COLOR_ON = new Color(0, 154, 0, 200);
-    private static final Color COLOR_OFF = new Color(154, 0, 0, 200);
+    private static final Color COLOR_ON = new Color(181, 27, 42, 220);
+    private static final Color COLOR_OFF = new Color(82, 10, 18, 220);
 
     private List<Boolean> values;
     private HotbarSetting hotbar;

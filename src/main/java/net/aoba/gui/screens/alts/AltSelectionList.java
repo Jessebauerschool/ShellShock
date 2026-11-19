@@ -144,7 +144,7 @@ public class AltSelectionList extends ObjectSelectionList<AltSelectionList.Entry
 			graphics.text(textRenderer, "Username: " + alt.getEmail(), (x + 32 + 3), (y + 2),
 					0xFFFFFFFF);
 			graphics.text(textRenderer, description, (x + 32 + 3), (y + 12),
-					alt.isCracked() ? 0xFFFF0000 : 0xFF00FF00, true);
+					alt.isCracked() ? 0xFFAAAAAA : 0xFFFF5555, true);
 
 			// Draws the respective player head.
 			drawHead(graphics, x + 4, y + 4);

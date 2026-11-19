@@ -22,8 +22,8 @@ import net.aoba.utils.types.MouseAction;
 import net.aoba.utils.types.MouseButton;
 
 public class CheckboxComponent extends Component {
-	private static final Shader COLOR_ON = Shader.gradient(new Color(2, 212, 2), new Color(0, 154, 0, 200), 90);
-	private static final Shader COLOR_OFF = Shader.gradient(new Color(189, 0, 0),new Color(154, 0, 0, 200), 90);		
+	private static final Shader COLOR_ON = Shader.solid(new Color(181, 27, 42));
+	private static final Shader COLOR_OFF = Shader.solid(new Color(82, 10, 18));
 
 	private Consumer<Boolean> onChanged;
 	private final StringComponent headerComponent;
@@ -56,7 +56,7 @@ public class CheckboxComponent extends Component {
 		checkRectangle = new RectangleComponent();
 		checkRectangle.setProperty(BackgroundProperty,COLOR_OFF);
 		checkRectangle.bindProperty(BorderProperty, GuiManager.componentBorderColor);
-		checkRectangle.setProperty(CornerRadiusProperty, 3f);
+		checkRectangle.setProperty(CornerRadiusProperty, 0f);
 		checkRectangle.setProperty(UIElement.CursorProperty, CursorStyle.Click);
 		checkRectangle.setProperty(UIElement.WidthProperty, 20f);
 		checkRectangle.setProperty(UIElement.HeightProperty, 20f);

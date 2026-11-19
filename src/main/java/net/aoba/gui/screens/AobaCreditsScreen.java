@@ -76,7 +76,7 @@ public class AobaCreditsScreen extends Screen {
 
 	private void drawContributorName(GuiGraphicsExtractor context, String contributor, int x, int y, float alpha) {
 		Aoba.getInstance().render2D.drawString(contributor, (float) x, (float) y,
-				Shader.solid(Colors.White),
+				Shader.solid(Colors.UiBrightRed),
 				GuiManager.fontSetting.getValue().getRenderer());
 	}
 

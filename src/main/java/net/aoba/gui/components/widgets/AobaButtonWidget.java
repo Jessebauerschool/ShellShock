@@ -23,11 +23,15 @@ import net.minecraft.network.chat.Component;
 
 public class AobaButtonWidget extends AbstractButton {
 	private Consumer<AobaButtonWidget> pressAction;
-	private long hoverStartTime = 0;
-	private static final long HOVER_ANIMATION_DURATION = 200000000;
 
 	public AobaButtonWidget(int x, int y, int width, int height, Component message) {
 		super(x, y, width, height, message);
+	}
+
+	public AobaButtonWidget(int x, int y, int width, int height, Component message,
+			Consumer<AobaButtonWidget> pressAction) {
+		this(x, y, width, height, message);
+		this.pressAction = pressAction;
 	}
 
 	public void setPressAction(Consumer<AobaButtonWidget> pressAction) {
@@ -47,33 +51,24 @@ public class AobaButtonWidget extends AbstractButton {
 
 	@Override
 	protected void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a) {
-		if (isHovered() && hoverStartTime == 0) {
-			hoverStartTime = System.nanoTime();
-		} else if (!isHovered()) {
-			hoverStartTime = 0;
-		}
-
-		long currentTime = System.nanoTime();
-		float hoverProgress = hoverStartTime > 0 ? (currentTime - hoverStartTime) / (float) HOVER_ANIMATION_DURATION
-				: 0;
-		hoverProgress = Math.min(hoverProgress, 1.0f);
-		hoverProgress = (float) Math.sin(hoverProgress * Math.PI / 2);
-
-		Shader bgEffect = isHovered() ? GuiManager.buttonHoverBackgroundColor.getValue() : GuiManager.buttonBackgroundColor.getValue();
+		Shader bgEffect = !active ? GuiManager.componentBackgroundColor.getValue()
+				: isHovered() ? GuiManager.buttonHoverBackgroundColor.getValue()
+						: GuiManager.buttonBackgroundColor.getValue();
 		Shader bdEffect = GuiManager.buttonBorderColor.getValue();
 
 		Renderer2D renderer = Aoba.getInstance().render2D;
 		renderer.beginFrame(graphics, MC.getDeltaTracker());
-		renderer.drawOutlinedRoundedBox(getX(), getY(), width, height, GuiManager.roundingRadius.getValue(),
+		renderer.drawOutlinedRoundedBox(getX(), getY(), width, height, 0f,
 				bdEffect, bgEffect);
 
 		Font font = GuiManager.fontSetting.getValue().getRenderer();
 		int textWidth = font.width(getMessage().getString());
 		int textHeight = font.lineHeight;
 		int textX = getX() + (width - textWidth) / 2;
-		int textY = getY() + (height - textHeight) / 2 - (int) (2 * hoverProgress) + 2;
+		int textY = getY() + (height - textHeight) / 2;
 
 		renderer.drawStringWithScale(getMessage().getString(), textX, textY,
-				GuiManager.foregroundColor.getValue(), 1f, font);
+				active ? GuiManager.foregroundColor.getValue() : GuiManager.foregroundAccentColor.getValue(), 1f,
+				font);
 	}
 }

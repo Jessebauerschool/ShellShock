@@ -108,7 +108,7 @@ public class ProxySelectionList extends ObjectSelectionList<ProxySelectionList.E
 			int lineHeight = 12;
 
 			Shader textColor = Shader.solid(
-					owner.isActiveProxy(proxy) ? Colors.Green :Colors.White);
+					owner.isActiveProxy(proxy) ? Colors.UiBrightRed : Colors.White);
 
 			Font font = GuiManager.fontSetting.getValue().getRenderer();
 			Aoba.getInstance().render2D.drawStringWithScale("IP: " + proxy.getIp(), x + 32 + 3, y, textColor, 1.0f, font);

@@ -9,9 +9,9 @@
 package net.aoba.gui.screens.alts;
 
 import net.aoba.Aoba;
+import net.aoba.gui.components.widgets.AobaButtonWidget;
 import net.aoba.managers.altmanager.Alt;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -21,7 +21,7 @@ public class AddAltScreen extends Screen {
 
     private final AltScreen parent;
 
-    private Button buttonAddAlt;
+    private AobaButtonWidget buttonAddAlt;
     private Checkbox toggleCracked;
     private EditBox textFieldAltUsername;
     
@@ -41,18 +41,18 @@ public class AddAltScreen extends Screen {
         toggleCracked = Checkbox.builder(Component.nullToEmpty("Cracked Account?"), font).pos(width / 2 - 100, height / 2 - 12).build();
         addRenderableWidget(toggleCracked);
 
-        buttonAddAlt = Button.builder(Component.nullToEmpty("Add Alt"), b -> onButtonAltAddPressed())
-                .bounds(width / 2 - 100, height / 2 + 24, 200, 20).build();
+        buttonAddAlt = new AobaButtonWidget(width / 2 - 100, height / 2 + 24, 200, 20,
+                Component.nullToEmpty("Add Alt"), b -> onButtonAltAddPressed());
         addRenderableWidget(buttonAddAlt);
 
-        addRenderableWidget(Button.builder(Component.nullToEmpty("Cancel"), b -> onButtonCancelPressed())
-                .bounds(width / 2 - 100, height / 2 + 46, 200, 20).build());
+        addRenderableWidget(new AobaButtonWidget(width / 2 - 100, height / 2 + 46, 200, 20,
+                Component.nullToEmpty("Cancel"), b -> onButtonCancelPressed()));
     }
 
     @Override
     public void extractRenderState(final GuiGraphicsExtractor graphics, final int mouseX, final int mouseY, final float a) {
         super.extractRenderState(graphics, mouseX, mouseY, a);
-        graphics.centeredText(font, "Add Alternate Account", width / 2, 20, 0xFFFFFFFF);
+        graphics.centeredText(font, "Add Alternate Account", width / 2, 20, 0xFFFF5555);
         graphics.centeredText(font, "Username:", width / 2 - 75, height / 2 - 50, 0xFFFFFFFF);
     }
 

@@ -47,7 +47,7 @@ public class UIOptionsWindow extends Window {
 		stackPanel.addChild(clickGuiButtonComponent);
 
 		// Font
-		StringComponent fontHeader = new StringComponent("HUD Font");
+		StringComponent fontHeader = new StringComponent("UI Font");
 		fontHeader.setProperty(UIElement.FontWeightProperty, FontManager.WEIGHT_BOLD);
 		fontHeader.bindProperty(UIElement.ForegroundProperty, GuiManager.foregroundHeaderColor);
 		stackPanel.addChild(fontHeader);

@@ -41,7 +41,7 @@ import net.minecraft.resources.Identifier;
 public class FontManager {
 	private static final String BUILTIN_FONT_PATH = "/assets/aoba/fonts/";
 	private static final String[] BUILTIN_FONT_IDS = { "lato_regular", "helvetica" };
-	public static final String DEFAULT_FONT = "lato_regular";
+	public static final String DEFAULT_FONT = "Minecraft";
 
 	public static final int WEIGHT_THIN = 100;
 	public static final int WEIGHT_EXTRA_LIGHT = 200;
@@ -76,14 +76,10 @@ public class FontManager {
 	}
 
 	public void Initialize() {
+		fonts.put(DEFAULT_FONT, new UIFont(DEFAULT_FONT, null));
 		loadBuiltinFonts();
 		loadUserFonts();
 
-		if (fonts.get(DEFAULT_FONT) == null) {
-			LogUtils.getLogger().error(
-					"[ShellShock] Default font '{}' failed to load. Drop {}.ttf into src/main/resources{}",
-					DEFAULT_FONT, DEFAULT_FONT, BUILTIN_FONT_PATH);
-		}
 	}
 
 	private void loadBuiltinFonts() {

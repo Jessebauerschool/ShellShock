@@ -29,7 +29,7 @@ public class BlocksComponent extends Component {
 	private static final float BLOCK_SIZE = 40f;
 	private static final float DEFAULT_HEIGHT = 128f;
 
-	private static final Shader SELECTED_EFFECT = Shader.solid(new Color(0, 255, 0, 55));
+	private static final Shader SELECTED_EFFECT = Shader.solid(new Color(181, 27, 42, 170));
 
 	private HashSet<Block> blocks;
 

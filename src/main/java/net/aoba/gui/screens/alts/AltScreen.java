@@ -11,11 +11,11 @@ package net.aoba.gui.screens.alts;
 import java.util.List;
 
 import net.aoba.Aoba;
+import net.aoba.gui.components.widgets.AobaButtonWidget;
 import net.aoba.gui.screens.AobaPanorama;
 import net.aoba.managers.altmanager.Alt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
@@ -26,8 +26,8 @@ public class AltScreen extends Screen {
 
 	private final HeaderAndFooterLayout layout = new HeaderAndFooterLayout(this, 33, 64);
 	private final Screen parentScreen;
-	private Button editButton;
-	private Button deleteButton;
+	private AobaButtonWidget editButton;
+	private AobaButtonWidget deleteButton;
 	private AltSelectionList altListSelector;
 
 	public AltScreen(Screen parentScreen) {
@@ -43,24 +43,24 @@ public class AltScreen extends Screen {
 		layout.addToContents(altListSelector);
 
 		LinearLayout topRow = LinearLayout.horizontal().spacing(4);
-		topRow.addChild(Button.builder(Component.nullToEmpty("Direct Login"), b -> minecraft.gui.setScreen(new DirectLoginAltScreen(this)))
-				.width(100).build());
-		topRow.addChild(Button.builder(Component.nullToEmpty("Add Alt"), b -> minecraft.gui.setScreen(new AddAltScreen(this)))
-				.width(100).build());
+		topRow.addChild(new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Direct Login"),
+				b -> minecraft.gui.setScreen(new DirectLoginAltScreen(this))));
+		topRow.addChild(new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Add Alt"),
+				b -> minecraft.gui.setScreen(new AddAltScreen(this))));
 
 		LinearLayout bottomRow = LinearLayout.horizontal().spacing(4);
-		deleteButton = Button.builder(Component.nullToEmpty("Delete Alt"), b -> deleteSelected())
-				.width(100).build();
+		deleteButton = new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Delete Alt"),
+				b -> deleteSelected());
 		deleteButton.active = false;
 		bottomRow.addChild(deleteButton);
 
-		editButton = Button.builder(Component.nullToEmpty("Edit Alt"), b -> editSelected())
-				.width(100).build();
+		editButton = new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Edit Alt"),
+				b -> editSelected());
 		editButton.active = false;
 		bottomRow.addChild(editButton);
 
-		bottomRow.addChild(Button.builder(Component.nullToEmpty("Cancel"), b -> minecraft.gui.setScreen(parentScreen))
-				.width(100).build());
+		bottomRow.addChild(new AobaButtonWidget(0, 0, 100, 20, Component.nullToEmpty("Cancel"),
+				b -> minecraft.gui.setScreen(parentScreen)));
 
 		LinearLayout footer = layout.addToFooter(LinearLayout.vertical().spacing(4));
 		footer.addChild(topRow);
@@ -91,7 +91,7 @@ public class AltScreen extends Screen {
         super.extractRenderState(graphics, mouseX, mouseY, a);
 		graphics.centeredText(font,
 				"Currently Logged Into: " + Minecraft.getInstance().getUser().getName(), width / 2, 20,
-				0xFFFFFFFF);
+				0xFFFF5555);
     }
 
 	public List<Alt> getAltList() {
