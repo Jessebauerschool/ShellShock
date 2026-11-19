@@ -4,6 +4,10 @@
 
 ShellShock is a Fabric client for **Minecraft 26.3.x**, with a customizable interface and a broad set of utility features.
 
+
+## Release Cycle
+
+I generally push in 2 - 4 large commits a week, so unlike other projects, i only publish large / version commits
 ## Features
 
 - **Alt manager** for managing Minecraft accounts
@@ -15,7 +19,7 @@ ShellShock is a Fabric client for **Minecraft 26.3.x**, with a customizable inte
 
 ## Default keybinds
 
-- `Right Shift` (1.21.5+) / `Tilde (~)` (1.21.4) — Open or close the ClickGUI
+- `Right Shift` — Open or close the ClickGUI
 - `Up` / `Down` — Move through menu items
 - `Left` — Exit the current menu
 - `Right` — Enter the selected menu
